@@ -1,4 +1,4 @@
-package com.sefadalgic.fooddeliveryapp.presentation.splash
+package com.sefadalgic.fooddeliveryapp.presentation.view.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -16,12 +17,22 @@ import androidx.compose.ui.unit.dp
 import com.sefadalgic.fooddeliveryapp.R
 import com.sefadalgic.fooddeliveryapp.core.utils.ResponsiveSize
 import com.sefadalgic.fooddeliveryapp.core.utils.rememberResponsiveSize
+import com.sefadalgic.fooddeliveryapp.presentation.navigation.LocalNavController
+import com.sefadalgic.fooddeliveryapp.presentation.navigation.RouteScreen
 import com.sefadalgic.fooddeliveryapp.ui.theme.BackgroundColor
+import kotlinx.coroutines.delay
 
 @Composable
 @Preview
 fun SplashScreen() {
     val size = rememberResponsiveSize()
+    val navController = LocalNavController.current
+
+    LaunchedEffect(Unit) {
+        delay(2000)
+        navController.navigate(RouteScreen.Onboarding.route) {
+        }
+    }
 
     Column(
         verticalArrangement = Arrangement.SpaceBetween,

@@ -25,6 +25,7 @@ import com.sefadalgic.fooddeliveryapp.presentation.navigation.LocalNavController
 
 import com.sefadalgic.fooddeliveryapp.presentation.navigation.NavigationGraph
 import com.sefadalgic.fooddeliveryapp.presentation.view.splash.SplashScreen
+import com.sefadalgic.fooddeliveryapp.ui.theme.CustomAppTheme
 import com.sefadalgic.fooddeliveryapp.ui.theme.FoodDeliveryAppTheme
 
 
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FoodDeliveryAppTheme {
+            CustomAppTheme {
                 val navController = rememberNavController()
 
                 CompositionLocalProvider(
@@ -44,11 +45,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-@Composable
-fun OnboardingScreen() {
-    Text("sefa")
 }
 
 

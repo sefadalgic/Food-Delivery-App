@@ -1,5 +1,6 @@
 package com.sefadalgic.fooddeliveryapp.ui.components
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -21,9 +22,11 @@ import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 fun CustomElevatedButton(onClick: () -> Unit, title: String) {
     Button(
         modifier = Modifier.fillMaxWidth(),
+
         colors = ButtonDefaults.buttonColors(
             containerColor = colorResource(R.color.royal_oranje)
         ),
+        contentPadding = PaddingValues(vertical = 6.dp),
         shape = RoundedCornerShape(size = 12.dp),
         onClick = onClick) {
         Text(title, style = AppTypography.titleSmall)

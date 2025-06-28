@@ -6,5 +6,9 @@
                 "you just place the orer we do the rest</string>
     <string name="skip">Skip</string>
     <string name="next">next</string>
+    <string name="get_started">Get Started</string>
+    <string name="loginTitle">Log In</string>
+    <string name="loginSubtitle">Please sign in to your existing account</string>
+
 
 </resources>

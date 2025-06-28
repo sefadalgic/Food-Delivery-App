@@ -61,4 +61,6 @@ dependencies {
     implementation(libs.compose)
 
     implementation(libs.androidx.ui.text.google.fonts)
+
+    implementation(libs.androidx.material.icons.extended)
 }

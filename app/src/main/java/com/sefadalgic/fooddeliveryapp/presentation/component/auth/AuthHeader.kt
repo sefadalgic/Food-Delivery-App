@@ -1,6 +1,5 @@
-package com.sefadalgic.fooddeliveryapp.presentation.component
+package com.sefadalgic.fooddeliveryapp.presentation.component.auth
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -24,7 +23,7 @@ fun AuthHeader (title : String, subtitle: String) {
         modifier = Modifier.size(
             width = size.width(1f).dp,
             size.height(0.29f).dp
-        ).background(color = Color.Black)
+        )
     )
     {   Spacer(modifier = Modifier.size(size.height(0.14f).dp))
         Text(title,

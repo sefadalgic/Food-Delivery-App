@@ -9,6 +9,9 @@
     <string name="get_started">Get Started</string>
     <string name="loginTitle">Log In</string>
     <string name="loginSubtitle">Please sign in to your existing account</string>
-
+    <string name="mail">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="exampleMail">example@mail.com</string>
+    <string name="passwordHint">********</string>
 
 </resources>

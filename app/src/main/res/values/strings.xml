@@ -13,5 +13,10 @@
     <string name="password">PASSWORD</string>
     <string name="exampleMail">example@mail.com</string>
     <string name="passwordHint">********</string>
+    <string name="or">Or</string>
+    <string name="dontHaveAccount">Don\'t have an account ?</string>
+    <string name="signUp">SIGN UP</string>
+    <string name="login">LOG IN</string>
+    <string name="forgotPassword">Forgot Password</string>
 
 </resources>

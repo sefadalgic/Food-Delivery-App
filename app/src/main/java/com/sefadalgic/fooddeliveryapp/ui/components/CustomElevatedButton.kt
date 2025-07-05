@@ -18,15 +18,19 @@ import androidx.compose.ui.unit.sp
 import com.sefadalgic.fooddeliveryapp.R
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
+
+
 @Composable
-fun CustomElevatedButton(onClick: () -> Unit, title: String) {
+fun CustomElevatedButton(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit, title: String) {
     Button(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
 
         colors = ButtonDefaults.buttonColors(
             containerColor = colorResource(R.color.royal_oranje)
         ),
-        contentPadding = PaddingValues(vertical = 6.dp),
+        contentPadding = PaddingValues(vertical = 18.dp),
         shape = RoundedCornerShape(size = 12.dp),
         onClick = onClick) {
         Text(title, style = AppTypography.titleSmall)

@@ -18,5 +18,7 @@
     <string name="signUp">SIGN UP</string>
     <string name="login">LOG IN</string>
     <string name="forgotPassword">Forgot Password</string>
-
+    <string name="rememeberMe">Remember Me</string>
+    <string name="sendCode">SEND CODE</string>
+    <string name="forgotPasswordSubtitle">Please sign in to your existing account</string>
 </resources>

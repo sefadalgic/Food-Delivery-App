@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import com.sefadalgic.fooddeliveryapp.R
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
+
+
 @Composable
 fun AuthTextFieldWithLabeledText(
     modifier: Modifier = Modifier,
@@ -43,9 +45,11 @@ fun AuthTextFieldWithLabeledText(
     ) {
         Text(text = labelText,  style = AppTypography.bodyLarge)
 
+        // TODO: Add validation
         TextField(
             value = value,
             singleLine = true,
+
             trailingIcon = if (isPasswordField) {
                 {
                     IconButton(

@@ -38,6 +38,7 @@ import com.sefadalgic.fooddeliveryapp.R
 import com.sefadalgic.fooddeliveryapp.core.utils.Size
 import com.sefadalgic.fooddeliveryapp.presentation.component.auth.AuthHeader
 import com.sefadalgic.fooddeliveryapp.presentation.component.auth.AuthTextFieldWithLabeledText
+import com.sefadalgic.fooddeliveryapp.presentation.component.auth.SocialLoginIconButton
 import com.sefadalgic.fooddeliveryapp.ui.components.CustomElevatedButton
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
@@ -160,24 +161,9 @@ fun LoginScreen() {
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
 
-                    Image(
-                        modifier = Modifier.size(60.dp),
-                        painter = painterResource(R.drawable.facebook),
-                        contentDescription = null
-                    )
-                    Image(
-                        modifier = Modifier.size(60.dp).padding(
-                        ),
-                        painter = painterResource(R.drawable.apple),
-                        contentDescription = null
-                    )
-                    Image(
-                        modifier = Modifier.size(60.dp),
-                        painter = painterResource(R.drawable.twitter),
-                        contentDescription = null
-                    )
-
-
+                    SocialLoginIconButton(resId = R.drawable.facebook) { }
+                    SocialLoginIconButton(resId = R.drawable.twitter) { }
+                    SocialLoginIconButton(resId = R.drawable.apple) { }
 
                 }
             }
@@ -213,8 +199,7 @@ fun RememberMeCheckbox(modifier: Modifier = Modifier) {
         }
 
         Text(
-            text = "Remember Me",
-
+            text = stringResource(R.string.rememeberMe),
             style = TextStyle(
                 color = colorResource(R.color.icealanding_blue)
             ), modifier = Modifier.padding(start = 10.dp)

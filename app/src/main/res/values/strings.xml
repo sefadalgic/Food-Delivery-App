@@ -25,4 +25,9 @@
     <string name="nameHint">John Doe</string>
     <string name="retypePassword">RE-TYPE PASSWORD</string>
     <string name="name">NAME</string>
+    <string name="code">Code</string>
+    <string name="resendCode">Resend Code</string>
+    <string name="verification">Verification</string>
+    <string name="verificationSubtitle">We have sent a code to your email</string>
+    <string name="verify">VERIFY</string>
 </resources>

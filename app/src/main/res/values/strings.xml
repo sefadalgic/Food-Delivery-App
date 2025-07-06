@@ -21,4 +21,8 @@
     <string name="rememeberMe">Remember Me</string>
     <string name="sendCode">SEND CODE</string>
     <string name="forgotPasswordSubtitle">Please sign in to your existing account</string>
+    <string name="signUpSubtitle">Please sign up to get started</string>
+    <string name="nameHint">John Doe</string>
+    <string name="retypePassword">RE-TYPE PASSWORD</string>
+    <string name="name">NAME</string>
 </resources>

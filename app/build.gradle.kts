@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.sefadalgic.fooddeliveryapp"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.sefadalgic.fooddeliveryapp"
@@ -63,4 +63,10 @@ dependencies {
     implementation(libs.androidx.ui.text.google.fonts)
 
     implementation(libs.androidx.material.icons.extended)
+
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+
 }

@@ -33,11 +33,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.sefadalgic.fooddeliveryapp.R
 import com.sefadalgic.fooddeliveryapp.data.model.OnboardingData
 import com.sefadalgic.fooddeliveryapp.data.repository.onboardingData
+import com.sefadalgic.fooddeliveryapp.presentation.navigation.LocalNavController
+import com.sefadalgic.fooddeliveryapp.presentation.navigation.RouteScreen
 import com.sefadalgic.fooddeliveryapp.ui.components.CustomElevatedButton
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 import com.sefadalgic.fooddeliveryapp.ui.theme.CustomAppTheme
@@ -56,6 +59,9 @@ fun OnboardingScreen() {
     }
 
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
+
+    val navController = LocalNavController.current
+
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -95,7 +101,7 @@ fun OnboardingScreen() {
                     if (pagerState.currentPage < onboardingData.size - 1) {
                         pagerState.animateScrollToPage(pagerState.currentPage + 1)
                     }else {
-                        // TODO: Navigate the next page
+                        navController.navigate(RouteScreen.Home.route)
                     }
 
                 }

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.sefadalgic.fooddeliveryapp.presentation.view.home.HomeScreen
 import com.sefadalgic.fooddeliveryapp.presentation.view.onboarding.OnboardingPageContent
 import com.sefadalgic.fooddeliveryapp.presentation.view.onboarding.OnboardingScreen
 import com.sefadalgic.fooddeliveryapp.presentation.view.splash.SplashScreen
@@ -12,13 +13,16 @@ import com.sefadalgic.fooddeliveryapp.presentation.view.splash.SplashScreen
 fun NavigationGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = RouteScreen.Splash.route
+        startDestination = RouteScreen.Onboarding.route
     ) {
         composable(route = RouteScreen.Splash.route) {
             SplashScreen()
         }
         composable(route = RouteScreen.Onboarding.route) {
             OnboardingScreen()
+        }
+        composable(route = RouteScreen.Home.route) {
+            HomeScreen()
         }
     }
 }

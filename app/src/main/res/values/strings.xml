@@ -30,4 +30,8 @@
     <string name="verification">Verification</string>
     <string name="verificationSubtitle">We have sent a code to your email</string>
     <string name="verify">VERIFY</string>
+    <string name="shoppingBag">Shopping Bag</string>
+    <string name="menu">Menu</string>
+    <string name="deliverTo">Deliver To</string>
+    <string name="searchHint">Search dishes, restaurants</string>
 </resources>

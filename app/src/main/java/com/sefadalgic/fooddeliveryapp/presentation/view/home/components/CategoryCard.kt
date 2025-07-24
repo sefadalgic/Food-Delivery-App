@@ -42,7 +42,7 @@ fun CategoryCard(modifier: Modifier = Modifier, name: String, startingPrice: Lon
 
             }
 
-            Text(text = "Pizza",
+            Text(text = name,
                 modifier = Modifier.padding(top= 12.dp),
                 maxLines = 1,
                 style = AppTypography.titleSmall.copy(

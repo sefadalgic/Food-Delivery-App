@@ -5,14 +5,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sefadalgic.fooddeliveryapp.core.network.RetrofitInstance
 import com.sefadalgic.fooddeliveryapp.data.model.Category
+import com.sefadalgic.fooddeliveryapp.data.model.UiState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
-    private val _categories = MutableStateFlow<List<Category>>(emptyList())
-    val categories: StateFlow<List<Category>> = _categories
+    private val _categories = MutableStateFlow<UiState<List<Category>>>(UiState.Loading)
+    val categories: StateFlow<UiState<List<Category>>> = _categories
 
 
     fun fetchCategories() {
@@ -25,16 +26,15 @@ class HomeViewModel : ViewModel() {
             try {
                 val result = RetrofitInstance.api.getCategories()
                 if (result.data != null) {
-                    _categories.value = result.data
+                    _categories.value = UiState.Success(result.data)
                 }
 
             } catch (e: Exception) {
                 logThisException(e)
-            }
-        }
+             _categories.value = UiState.Error(e.message ?: "Unknown error")
+            }        }
     }
 
     private fun logThisException(ex: Throwable) {
-        print(ex.message)
-    }
+        Log.e("HomeViewModel", "Hata oluştu: ${ex.message}", ex)    }
 }

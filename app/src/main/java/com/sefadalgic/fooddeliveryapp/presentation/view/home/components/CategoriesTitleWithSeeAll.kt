@@ -1,5 +1,6 @@
 package com.sefadalgic.fooddeliveryapp.presentation.view.home.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,18 +16,19 @@ import androidx.compose.ui.unit.dp
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
 @Composable
-fun CategoriesTitleWithSeeAll(modifier: Modifier = Modifier) {
+fun TitleWithSeeAll(modifier: Modifier = Modifier, title: String, onSeeAllClick: () -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(top = 25.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "All Categories",
+            text = title,
             style = AppTypography.titleMedium
         )
 
         Row(
+            modifier = Modifier.clickable(onClick = onSeeAllClick),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = "See All", style = AppTypography.bodyMedium)

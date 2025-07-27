@@ -31,10 +31,12 @@ class HomeViewModel : ViewModel() {
 
             } catch (e: Exception) {
                 logThisException(e)
-             _categories.value = UiState.Error(e.message ?: "Unknown error")
-            }        }
+                _categories.value = UiState.Error(e.message ?: "Unknown error")
+            }
+        }
     }
 
     private fun logThisException(ex: Throwable) {
-        Log.e("HomeViewModel", "Hata oluştu: ${ex.message}", ex)    }
+        Log.e("HomeViewModel", "Hata oluştu: ${ex.message}", ex)
+    }
 }

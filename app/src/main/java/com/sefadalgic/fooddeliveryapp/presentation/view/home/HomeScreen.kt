@@ -77,7 +77,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 LazyRow {
                     items(categories) { category ->
                         CategoryCard(
-                            name = category.name)
+                            category = category)
                     }
                 }
             }

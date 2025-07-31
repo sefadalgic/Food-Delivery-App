@@ -13,7 +13,7 @@ import com.sefadalgic.fooddeliveryapp.presentation.view.splash.SplashScreen
 fun NavigationGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = RouteScreen.Onboarding.route
+        startDestination = RouteScreen.Home.route
     ) {
         composable(route = RouteScreen.Splash.route) {
             SplashScreen()

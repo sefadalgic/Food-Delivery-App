@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sefadalgic.fooddeliveryapp.core.network.RetrofitInstance
 import com.sefadalgic.fooddeliveryapp.data.model.Category
+import com.sefadalgic.fooddeliveryapp.data.model.Restaurant
 import com.sefadalgic.fooddeliveryapp.data.model.UiState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,11 +17,15 @@ class HomeViewModel : ViewModel() {
     val categories: StateFlow<UiState<List<Category>>> = _categories
 
 
+    private val _restaurants = MutableStateFlow<UiState<List<Restaurant>>>(UiState.Loading)
+    val restaurants: StateFlow<UiState<List<Restaurant>>> = _restaurants
+
+
+    private val handler = CoroutineExceptionHandler { _, exception ->
+        Log.e("HomeViewModel", "CoroutineExceptionHandler: ${exception.message}", exception)
+    }
     fun fetchCategories() {
 
-        val handler = CoroutineExceptionHandler { _, exception ->
-            Log.e("HomeViewModel", "CoroutineExceptionHandler: ${exception.message}", exception)
-        }
 
         viewModelScope.launch(handler) {
             try {
@@ -35,6 +40,24 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+
+    fun fetchOpenedRestaurants () {
+        viewModelScope.launch(handler) {
+            try {
+                    val result = RetrofitInstance.api.getOpenedRestaurants()
+                if (result.data != null) {
+                    _restaurants.value = UiState.Success(result.data)
+                }
+
+            }catch (e: Exception){
+                logThisException(e)
+                _categories.value = UiState.Error(e.message ?: "Unknown error in fetchOpenedRestaurants")
+            }
+        }
+    }
+
+
 
     private fun logThisException(ex: Throwable) {
         Log.e("HomeViewModel", "Hata oluştu: ${ex.message}", ex)

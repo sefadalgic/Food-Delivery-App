@@ -32,5 +32,4 @@ fun CategoryList(modifier: Modifier = Modifier, state: UiState<List<Category>>) 
             Text(text = errorMessage)
         }
     }
-
 }

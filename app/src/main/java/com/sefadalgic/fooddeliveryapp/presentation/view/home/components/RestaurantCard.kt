@@ -27,10 +27,11 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sefadalgic.fooddeliveryapp.R
+import com.sefadalgic.fooddeliveryapp.data.model.Restaurant
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
 @Composable
-fun RestaurantCard(modifier: Modifier = Modifier) {
+fun RestaurantCard(modifier: Modifier = Modifier, restaurant: Restaurant) {
     Column(
         modifier = modifier    ) {
         Box(
@@ -41,12 +42,12 @@ fun RestaurantCard(modifier: Modifier = Modifier) {
                 .background(color = Color.Red)
         )
         Text(
-            text = "Rose Garden Restaurant",
+            text = restaurant.name,
             style = AppTypography.titleMedium,
             modifier = Modifier.padding(top = 12.dp, bottom = 8.dp)
         )
         Text(
-            text = "Burger - Chicken - Riche - Wings", style = AppTypography.bodyMedium.copy(
+            text = restaurant.description ?: "", style = AppTypography.bodyMedium.copy(
                 color = colorResource(R.color.spaceman)
             )
         )
@@ -56,15 +57,15 @@ fun RestaurantCard(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(top = 12.dp)
         ) {
             RestaurantCardFeature(
-                icon = Icons.Outlined.Star, textValue = "4.5"
+                icon = Icons.Outlined.Star, textValue = restaurant.rating.toString()
             )
             RestaurantCardFeature(
                 modifier = Modifier.padding(horizontal = 22.dp),
                 icon = Icons.Outlined.FireTruck,
-                textValue = "Free"
+                textValue = restaurant.deliveryPrice.toString()
             )
             RestaurantCardFeature(
-                icon = Icons.Outlined.WatchLater, textValue = "20 Min"
+                icon = Icons.Outlined.WatchLater, textValue = "${restaurant.averageOrderTime} Min"
             )
         }
     }
@@ -82,10 +83,4 @@ fun RestaurantCardFeature(modifier: Modifier = Modifier, icon: ImageVector, text
         )
         Text(textValue, style = AppTypography.bodyMedium, modifier = Modifier.padding(start = 4.dp))
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun RestaurantCardPreview() {
-    RestaurantCard()
 }

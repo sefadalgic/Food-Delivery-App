@@ -1,5 +1,6 @@
 package com.sefadalgic.fooddeliveryapp.presentation.view.home
 
+import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sefadalgic.fooddeliveryapp.data.model.Category
+import com.sefadalgic.fooddeliveryapp.data.model.Restaurant
 import com.sefadalgic.fooddeliveryapp.data.model.UiState
 import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.TitleWithSeeAll
 import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.CategoryCard
@@ -25,6 +27,7 @@ import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.Category
 import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.GreetingsText
 import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.HomeTopBar
 import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.RestaurantCard
+import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.RestaurantList
 import com.sefadalgic.fooddeliveryapp.presentation.view.home.components.SearchField
 
 @Composable
@@ -33,38 +36,40 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     val viewModel: HomeViewModel = viewModel()
     LaunchedEffect(Unit) {
         viewModel.fetchCategories()
+        viewModel.fetchOpenedRestaurants()
     }
 
 
     val categoriesState by viewModel.categories.collectAsState()
+    val restaurantState by viewModel.restaurants.collectAsState()
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        HomeTopBar()
-        GreetingsText()
-        SearchField()
-        TitleWithSeeAll(
-            title = "All Categories", onSeeAllClick = {})
-
-        CategoryList(state = categoriesState)
-        TitleWithSeeAll(
-            title = "Open Restaurants", onSeeAllClick = {})
-
-        LazyColumn(
-            modifier = Modifier.padding(top = 6.dp)
-        ) {
-            items(3) {
-                RestaurantCard(modifier = Modifier.padding(bottom = 16.dp))
-            }
+        item {
+            HomeTopBar()
+        }
+        item {
+            GreetingsText()
+        }
+        item {
+            SearchField()
+        }
+        item {
+            TitleWithSeeAll(
+                title = "All Categories", onSeeAllClick = {})
+        }
+        item {
+            CategoryList(state = categoriesState)
+        }
+        item {
+            TitleWithSeeAll(
+                title = "Open Restaurants", onSeeAllClick = {})
+        }
+        item {
+            RestaurantList(restaurantState = restaurantState)
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun HomeScreenPreview() {
-    HomeScreen()
 }

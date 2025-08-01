@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.FireTruck
 import androidx.compose.material.icons.outlined.Star
@@ -23,13 +24,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 import com.sefadalgic.fooddeliveryapp.R
+import com.sefadalgic.fooddeliveryapp.core.utils.AppConstants
 import com.sefadalgic.fooddeliveryapp.data.model.Restaurant
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun RestaurantCard(modifier: Modifier = Modifier, restaurant: Restaurant) {
     Column(
@@ -39,8 +48,15 @@ fun RestaurantCard(modifier: Modifier = Modifier, restaurant: Restaurant) {
                 .fillMaxWidth()
                 .size(140.dp)
                 .clip(shape = RoundedCornerShape(16.dp))
-                .background(color = Color.Red)
-        )
+
+        ) {
+            GlideImage(
+                model = "${AppConstants.baseImageUrl}/${restaurant.image}",
+
+                failure = placeholder(painterResource(R.drawable.logo)),
+                contentScale = ContentScale.FillBounds, contentDescription = "test"
+            )
+        }
         Text(
             text = restaurant.name,
             style = AppTypography.titleMedium,

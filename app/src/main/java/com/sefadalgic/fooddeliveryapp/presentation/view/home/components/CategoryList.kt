@@ -28,7 +28,7 @@ fun CategoryList(modifier: Modifier = Modifier, state: UiState<List<Category>>) 
         }
 
         is UiState.Error -> {
-            val errorMessage = (state as UiState.Error).message
+            val errorMessage = state.message
             Text(text = errorMessage)
         }
     }

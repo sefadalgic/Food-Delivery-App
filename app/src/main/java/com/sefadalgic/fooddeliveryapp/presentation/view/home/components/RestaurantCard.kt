@@ -42,7 +42,8 @@ import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 @Composable
 fun RestaurantCard(modifier: Modifier = Modifier, restaurant: Restaurant) {
     Column(
-        modifier = modifier    ) {
+        modifier = modifier
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -54,7 +55,8 @@ fun RestaurantCard(modifier: Modifier = Modifier, restaurant: Restaurant) {
                 model = "${AppConstants.baseImageUrl}/${restaurant.image}",
 
                 failure = placeholder(painterResource(R.drawable.logo)),
-                contentScale = ContentScale.FillBounds, contentDescription = "test"
+                contentScale = ContentScale.FillBounds,
+                contentDescription = "test"
             )
         }
         Text(
@@ -99,4 +101,26 @@ fun RestaurantCardFeature(modifier: Modifier = Modifier, icon: ImageVector, text
         )
         Text(textValue, style = AppTypography.bodyMedium, modifier = Modifier.padding(start = 4.dp))
     }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+private fun RestaurantCardPreview() {
+    RestaurantCard(
+        restaurant = Restaurant(
+            id = 0,
+            name = "Sefa",
+            description = "Best restaurant in town",
+            "534",
+            mail = null,
+            image = null,
+            isActive = false,
+            openingTime = null,
+            closingTime = null,
+            rating = null,
+            averageOrderTime = null,
+            deliveryPrice = null
+        )
+    )
 }

@@ -2,6 +2,7 @@ package com.sefadalgic.fooddeliveryapp.presentation.view.category_detail.compone
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,14 +30,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.sefadalgic.fooddeliveryapp.R
+import com.sefadalgic.fooddeliveryapp.presentation.navigation.LocalNavController
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryDetailTopBar(modifier: Modifier = Modifier) {
+
+    val navController = LocalNavController.current
+
     TopAppBar(
         title = {
-
             Row {
                 Spacer(modifier = Modifier.width(12.dp))
                 Box(
@@ -72,6 +76,11 @@ fun CategoryDetailTopBar(modifier: Modifier = Modifier) {
                     .clip(CircleShape)
                     .size(50.dp)
                     .background(color = colorResource(R.color.bright_gray))
+                    .clickable(
+                        onClick =  {
+                            navController.popBackStack()
+                        }
+                    )
             ) {
                 Icon(
                     Icons.Default.ChevronLeft,

@@ -1,6 +1,7 @@
 package com.sefadalgic.fooddeliveryapp.presentation.view.home.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,17 +28,26 @@ import com.bumptech.glide.integration.compose.Placeholder
 import com.sefadalgic.fooddeliveryapp.R
 import com.sefadalgic.fooddeliveryapp.core.utils.AppConstants
 import com.sefadalgic.fooddeliveryapp.data.model.Category
+import com.sefadalgic.fooddeliveryapp.presentation.navigation.LocalNavController
+import com.sefadalgic.fooddeliveryapp.presentation.navigation.RouteScreen
 import com.sefadalgic.fooddeliveryapp.ui.theme.AppTypography
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun CategoryCard(modifier: Modifier = Modifier, category: Category, startingPrice: Long = 90) {
+
+    val navController = LocalNavController.current
+
     Box(
         modifier = Modifier
             .padding(end = 12.dp, top = 16.dp)
             .size(140.dp, 190.dp)
             .clip(RoundedCornerShape(20.dp))
-            .background(color = colorResource(R.color.white))
+            .background(color = colorResource(R.color.white)).clickable(
+                onClick = {
+                    navController.navigate(RouteScreen.CategoryDetail.createRoute(id = category.id, name = category.name),)
+                }
+            )
     ) {
 
         Column(
